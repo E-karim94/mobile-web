@@ -64,8 +64,13 @@
 </div>
 </div>   
 <div id="rev">
+     <div v-for="review in  reviewscomment" class="course">
+     <li v-for='(value, name) in review'>{{name}}: {{value}}</li>
+     </div>
+</div>
 
     <h1>leave a review</h1>
+
     <form id="reviews">
     <select v-model="selected">
     <option v-for="option in options"
@@ -214,35 +219,40 @@ data: {
     methods:{
     leaveReview:function (event){
         var review = this.searchText; 
-        var reviews = [];
+        reviews = JSON.parse(localStorage.getItem('reviews')); 
               if(this.selected ==="A"){
                 reviews.push({'math review':review});   
                      localStorage.setItem('reviews', JSON.stringify(reviews)); 
                     
-                     reviews = [{'math review':review}];   
-                     localStorage.setItem('reviews', JSON.stringify(reviews));
+                     
               }
                  else if (this.selected==="B") {
                   reviews.push({'english review':review});   
                      localStorage.setItem('reviews', JSON.stringify(reviews));
 
-                     reviews = [{'english review':review}];   
-                     localStorage.setItem('reviews', JSON.stringify(reviews));
+                     
                  }
-                     else if (this.selected==="c"){
+                     else 
                   reviews.push({'piano review':review});   
                      localStorage.setItem('reviews', JSON.stringify(reviews));
 
-                     reviews = [{'piano review':review}];   
-                     localStorage.setItem('reviews', JSON.stringify(reviews));
+                   
 
             
-  }
+  
 } 
     
     }})
+    var filterApp5 = new Vue({
+el: '#rev',
 
-
+data: { 
+},
+computed:{
+              reviewscomment:function(){
+            reviews = JSON.parse(localStorage.getItem('reviews'))
+            
+}}}); 
     </script>
 </body>
 </html>
