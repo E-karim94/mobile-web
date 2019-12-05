@@ -63,13 +63,14 @@
         <li v-for='(value, name) in topic'>{{name}}: {{value}}</li>
 </div>
 </div>   
-<div id="rev">
-     <div v-for="review in   reviewscomment" class="course">
-     <li v-for='(value, name) in review'>{{name}}: {{value}}</li>
-     </div>
-</div>
+
 
     <h1>leave a review</h1>
+    <div id="rev">
+            <div v-for="review in   reviewscomment" class="course">
+            <li v-for='(value, name) in review'>{{name}}: {{value}}</li>
+            </div>
+       </div>
 
     <form id="reviews">
     <select v-model="selected">

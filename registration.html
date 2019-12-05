@@ -38,6 +38,12 @@
     
                          <label for="password">Password</label>
                          <input required type="password" id ="password" v-model='password'>
+                         <select v-model="selected">
+                                <option v-for="option in options"
+                                v-bind:value="option.value">
+                                 {{option.text }}
+                                 </option>
+                                </select>
     
                          <button v-on:click='signin'>submit</button>
                     </form>
@@ -135,6 +141,12 @@ var Upasswordcon = this.confirmpassword;
  var signin = new Vue({
 el: '#signin',
 data: {
+    selected: 'A',
+    options: [
+      { text: 'student/parent', value: 'A' },
+      { text: 'Admin', value: 'B' },
+     
+    ],
     username:'',
     password: '',
  
