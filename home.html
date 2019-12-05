@@ -64,7 +64,7 @@
 </div>
 </div>   
 <div id="rev">
-     <div v-for="review in  reviewscomment" class="course">
+     <div v-for="review in   reviewscomment" class="course">
      <li v-for='(value, name) in review'>{{name}}: {{value}}</li>
      </div>
 </div>
@@ -252,11 +252,12 @@ data: {
 computed:{
               reviewscomment:function(){
             reviews = JSON.parse(localStorage.getItem('reviews'))
-            var arr = [];
-for (var i = 0; i < reviews.length; i++) {
-    arr.push(reviews[i].pianoReview);
-    alert(arr);
-}
+             const peopleArray = Object.keys(reviews).map(i => reviews[i])
+             return peopleArray ;
+
+          
+   
+
 }
 
             
