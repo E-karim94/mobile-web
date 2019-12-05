@@ -218,22 +218,23 @@ data: {
     },
     methods:{
     leaveReview:function (event){
-        var review = this.searchText; 
+        var review = this.searchText;
+      
         reviews = JSON.parse(localStorage.getItem('reviews')); 
               if(this.selected ==="A"){
-                reviews.push({'math review':review});   
+                reviews.push({'mathReview':review});   
                      localStorage.setItem('reviews', JSON.stringify(reviews)); 
                     
                      
               }
                  else if (this.selected==="B") {
-                  reviews.push({'english review':review});   
+                  reviews.push({'englishReview':review});   
                      localStorage.setItem('reviews', JSON.stringify(reviews));
 
                      
                  }
                      else 
-                  reviews.push({'piano review':review});   
+                  reviews.push({'pianoReview':review});   
                      localStorage.setItem('reviews', JSON.stringify(reviews));
 
                    
@@ -251,8 +252,15 @@ data: {
 computed:{
               reviewscomment:function(){
             reviews = JSON.parse(localStorage.getItem('reviews'))
+            var arr = [];
+for (var i = 0; i < reviews.length; i++) {
+    arr.push(reviews[i].pianoReview);
+    alert(arr);
+}
+}
+
             
-}}}); 
+}}); 
     </script>
 </body>
 </html>
