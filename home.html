@@ -74,7 +74,7 @@
      </option>
     </select>
     <input type="text" v-model="searchText" placeholder="review"><br>
-    <button v-on:click='leaveReview()'>submit</button>
+    <button v-on:click='leaveReview'>submit</button>
 </form>
 </div>
  
@@ -209,7 +209,8 @@ data: {
       { text: 'leave a rewiew for english', value: 'B' },
       { text: 'leave a rewiew for piano', value: 'c' },
      
-    ],
+    ]
+    },
     computed:{
     leaveReview:function (){
         var review = this.searchText; 
@@ -236,7 +237,7 @@ data: {
 
             
   }
-}} 
+} 
     
     }})
 
