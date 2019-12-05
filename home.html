@@ -211,9 +211,10 @@ data: {
      
     ]
     },
-    computed:{
-    leaveReview:function (){
+    methods:{
+    leaveReview:function (event){
         var review = this.searchText; 
+        var reviews = [];
               if(this.selected ==="A"){
                 reviews.push({'math review':review});   
                      localStorage.setItem('reviews', JSON.stringify(reviews)); 
