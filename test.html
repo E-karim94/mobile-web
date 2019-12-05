@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <scriptsrc="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <scriptsrc="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="testsort">
+            <input type="text" v-model="searchText" placeholder="Search">Search
+            <br><br>
+            <div v-bind:style="mainStyle"
+              v-for="(course,i) in computedCourses" :key="i">
+                    <ul>
+                        <li>topic: {{course.topic}}</li>
+                        <li>location: {{course.location}}</li>
+                        
+                       <li>price:&pound{{course.price}}</li>
+                        <li>rating: 
+                     {{course.rating}}</li>
+                    <button v-on:click=course.rating++>rating</button>
+                    
+                                     
+                      
+                        
+                    </ul>
+
+    </div>
+    </div>
+    <div id="testsearch">
+        
+ <select v-model="selected">
+        <option v-for="option in options"
+        v-bind:value="option.value">
+         {{option.text }}
+         </option>
+        </select>
+        <span>sort by Price</span>
+         <div v-for="course in sortedArray" class="sort">
+         </div>
+        </div>
+    
+    
+
+<script>
+
+var filterApp = new Vue({
+el: '#testsort',
+data: {
+    mainStyle:'red',
+    searchText:'',
+    courses:[
+{ 'topic': 'math', 'location': 'hendon', 'price': 100 },
+ { 'topic': 'math', 'location': 'colindale', 'price': 80 },
+ { 'topic': 'math', 'location': 'brent cross', 'price': 90 },
+ { 'topic': 'math', 'location': 'golders green', 'price': 120 },
+ { 'topic': 'english', 'location': 'hendon', 'price': 110 },
+ { 'topic': 'english', 'location': 'colindale', 'price': 90 },
+ { 'topic': 'english', 'location': 'brent cross', 'price': 90 },
+ { 'topic': 'english', 'location': 'golders green', 'price': 130 },
+ { 'topic': 'piano', 'location': 'hendon', 'price': 120 },
+ { 'topic': 'piano', 'location': 'golders green', 'price': 140 }
+]
+},
+ computed:{
+                computedCourses(){
+                    var computed =true;
+                    if(this.searchText.trim().length==0){
+                        return this.courses;
+                    }else{
+                        return this.courses.filter(c=>
+                        
+c.topic.toLowerCase().trim().includes(this.searchText.toLowerCase().trim())     
+//comapres both search and array list string and returns only those that matches
+        
+                        || 
+c.location.toLowerCase().trim().includes(this.searchText.toLowerCase().trim())
+
+                        )
+                    }
+                }}})
+
+var filterApp2 = new Vue({
+el: '#testsearch',
+data: {
+    courses:[
+{ 'topic': 'math', 'location': 'hendon', 'price': 100 },
+ { 'topic': 'math', 'location': 'colindale', 'price': 80 },
+ { 'topic': 'math', 'location': 'brent cross', 'price': 90 },
+ { 'topic': 'math', 'location': 'golders green', 'price': 120 },
+ { 'topic': 'english', 'location': 'hendon', 'price': 110 },
+ { 'topic': 'english', 'location': 'colindale', 'price': 90 },
+ { 'topic': 'english', 'location': 'brent cross', 'price': 90 },
+ { 'topic': 'english', 'location': 'golders green', 'price': 130 },
+ { 'topic': 'piano', 'location': 'hendon', 'price': 120 },
+ { 'topic': 'piano', 'location': 'golders green', 'price': 140 }
+]
+},
+    sortedArray: function(){
+              if(this.selected ==="A"){
+             function compare(a,b){
+             return b.price-a.price}}
+            if(this.selected==="B"){
+                      function compare(a,b){
+                        return a.price -b.price}}
+                    return this.courses.sort(compare);
+  }
+  })
+
+                
+</script>
+
+</body>
+</html>
